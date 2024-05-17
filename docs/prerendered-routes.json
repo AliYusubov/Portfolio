@@ -1,5 +1,9 @@
 {
   "routes": [
-    "/"
+    "/about",
+    "/contact",
+    "/home",
+    "/projects",
+    "/resume"
   ]
 }
