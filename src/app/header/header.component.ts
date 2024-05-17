@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
