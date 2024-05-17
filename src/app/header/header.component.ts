@@ -1,5 +1,5 @@
-import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Component, Inject, OnInit, PLATFORM_ID, HostListener } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -16,44 +16,56 @@ export class HeaderComponent implements OnInit {
     'projects': 0,
     'contact': 0
   };
+  isBrowser: boolean;
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit() {
-    this.setSectionOffsets();
-    this.setActiveItem();
+    if (this.isBrowser) {
+      this.setSectionOffsets();
+      this.setActiveItem();
+    }
   }
 
   setSectionOffsets() {
-    for (const section in this.sectionOffsets) {
-      const element = document.getElementById(section);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        this.sectionOffsets[section] = rect.top + window.pageYOffset - 100; 
+    if (this.isBrowser) {
+      for (const section in this.sectionOffsets) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          this.sectionOffsets[section] = rect.top + window.pageYOffset - 100; 
+        }
       }
     }
   }
 
   setActiveItem() {
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    for (const section in this.sectionOffsets) {
-      if (scrollPosition >= this.sectionOffsets[section]) {
-        this.activeItem = section;
+    if (this.isBrowser) {
+      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      for (const section in this.sectionOffsets) {
+        if (scrollPosition >= this.sectionOffsets[section]) {
+          this.activeItem = section;
+        }
       }
     }
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.setActiveItem();
+    if (this.isBrowser) {
+      this.setActiveItem();
+    }
   }
 
   scrollToElement(elementId: string) {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      this.activeItem = elementId;
+    if (this.isBrowser) {
+      const element = document.getElementById(elementId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        this.activeItem = elementId;
+      }
     }
   }
 }
-

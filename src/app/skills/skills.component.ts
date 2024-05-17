@@ -1,12 +1,11 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import AOS from 'aos';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
-  styleUrl: './skills.component.css'
+  styleUrls: ['./skills.component.css']
 })
-
 export class SkillsComponent implements OnInit {
   progress1: number = 0;
   progress2: number = 0;
@@ -14,28 +13,40 @@ export class SkillsComponent implements OnInit {
   progress4: number = 0;
   progress5: number = 0;
   progress6: number = 0;
+  private isBrowser: boolean;
 
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
-    AOS.init();
-    this.startAnimationOnScroll(); 
+    if (this.isBrowser) {
+      // AOS kütüphanesini sadece tarayıcı ortamında dinamik olarak yükle
+      import('aos').then(AOS => {
+        AOS.init();
+        this.startAnimationOnScroll();
+      });
+    }
   }
 
   private startAnimationOnScroll() {
-    const progressSign = document.querySelector('.progress-sign');
-    if (progressSign && this.isElementInViewport(progressSign)) {
-      this.updateProgressBars(); 
-    }
-
-    window.addEventListener('scroll', () => {
+    if (this.isBrowser) {
+      const progressSign = document.querySelector('.progress-sign');
       if (progressSign && this.isElementInViewport(progressSign)) {
-        this.updateProgressBars(); 
+        this.updateProgressBars();
       }
-    });
+
+      window.addEventListener('scroll', () => {
+        if (progressSign && this.isElementInViewport(progressSign)) {
+          this.updateProgressBars();
+        }
+      });
+    }
   }
 
   private isElementInViewport(el: Element): boolean {
+    if (!this.isBrowser) return false;
+
     const rect = el.getBoundingClientRect();
     return (
       rect.top >= 0 &&
@@ -46,11 +57,13 @@ export class SkillsComponent implements OnInit {
   }
 
   private updateProgressBars() {
-    this.progress1 = 100;
-    this.progress2 = 80;
-    this.progress3 = 90;
-    this.progress4 = 90;
-    this.progress5 = 75;
-    this.progress6 = 55;
+    if (this.isBrowser) {
+      this.progress1 = 100;
+      this.progress2 = 80;
+      this.progress3 = 90;
+      this.progress4 = 90;
+      this.progress5 = 75;
+      this.progress6 = 55;
+    }
   }
 }
