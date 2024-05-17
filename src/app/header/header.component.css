@@ -1,0 +1,67 @@
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9997;
+    transition: all 0.5s;
+    overflow-y: auto;
+}
+
+.nav-li {
+  padding: 15px;
+  width: 55px; 
+  background-color: rgb(235, 235, 235);
+  border-radius: 50px;
+  margin-bottom: 15px;
+  margin-left: -20px; 
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.nav-li .span {
+  display: none; 
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.nav-li:hover {
+  width: 150px; 
+  background-color: rgb(0, 88, 0);
+
+  a svg {
+    fill: rgb(255, 255, 255)!important; 
+    transition: 0.5s;
+  }
+
+  .span {
+    display: inline-block!important;
+    color: white!important;
+    transition: 1s!important;
+  }
+
+}
+
+
+.nav-li a svg {
+  height: 24px;
+  width: 24px;
+  fill: rgb(44, 44, 44); 
+}
+
+.nav-li.active {
+  background-color: rgb(0, 88, 0); 
+ }
+
+.nav-li.active a svg {
+  height: 24px;
+  width: 24px;
+  fill: rgb(255, 255, 255); 
+  transition: 0.5s;
+}
+
+
+

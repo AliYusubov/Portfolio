@@ -1,0 +1,73 @@
+.facts {
+  width: 100%;
+  padding-top: 100px;
+  text-align: center !important;
+  background-color: white;
+
+  h1 {
+    font-size: 33px;
+    color: rgb(47, 67, 47);
+  }
+}
+
+.facts .facts-first-section p {
+  text-align: center;
+  margin-top: 30px;
+  width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-size: 17px;
+}
+
+.facts-second-section .card {
+  margin-right: 21px;
+  margin-left: 21px;
+  background: none;
+  border: none;
+  margin-top: 100px;
+}
+
+.facts-card-icon {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(0, 88, 0);
+  border-radius: 100%;
+  padding: 11px;
+  width: 50px;
+
+}
+
+.facts-card-icon svg {
+  font-size: 25px;
+  color: white;
+}
+
+.paragraph {
+  background-color: rgb(120, 120, 120);
+  width: 150px;
+  height: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.7;
+
+  div {
+    background-color: black;
+    width: 70px;
+    height: 3px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.card-text {
+  color: grey;
+  font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-size: 17px;
+}

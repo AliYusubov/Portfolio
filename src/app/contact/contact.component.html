@@ -1,0 +1,84 @@
+<div class="contact">
+  <div class="contact-first-section container" data-aos="fade-up" data-aos-duration="2000" data-aos-once="false">
+    <h1>CONTACT</h1>
+    <div class="paragraph">
+      <div></div>
+    </div>
+  </div>
+  <div class="contact-second-section" data-aos="fade-up" data-aos-duration="2000" data-aos-once="false">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="address container">
+            <div class="row">
+              <div class="col-2">
+                <div class="address-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+              </div><br><br>
+              <div class="col-10">
+                <div class="address-text">
+                  <h4>Location:</h4>
+                  <p>Badamdar 3rd massive , Baku, AZ</p>
+                </div>
+              </div>
+            </div>
+          </div><br><br>
+          <div class="address container">
+            <div class="row">
+              <div class="col-2">
+                <div class="address-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+              </div><br><br>
+              <div class="col-10">
+                <div class="address-text">
+                  <h4>Email:</h4>
+                  <p>yusubovali3&#64;gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div><br><br>
+          <div class="address container">
+            <div class="row">
+              <div class="col-2">
+                <div class="address-icon">
+                  <i class="fa-solid fa-mobile"></i>
+                </div>
+              </div>
+              <div class="col-10">
+                <div class="address-text">
+                  <h4>Call:</h4>
+                  <p>+994 070 620 12 14</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-8">
+          <form class="container-fluid">
+            <div class="form-row row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="text" placeholder="Your Name"
+                  [ngClass]="{'form-focus': input1Focused}" (focus)="onFocus(1)" (blur)="onBlur()" pattern="[A-Za-z]+" required>
+              </div>
+              <div class="form-group col-md-6">
+                <input type="email" class="form-control" id="email" placeholder="Your Email"
+                  [ngClass]="{'form-focus': input2Focused}" (focus)="onFocus(2)" (blur)="onBlur()" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="text" placeholder="Subject"
+                [ngClass]="{'form-focus': input3Focused}" (focus)="onFocus(3)" (blur)="onBlur()" required>
+            </div>
+            <div class="form-group">
+              <textarea name="message" rows="10" cols="0" class="form-control" id="message" placeholder="Message"
+                [ngClass]="{'form-focus': input4Focused}" (focus)="onFocus(4)" (blur)="onBlur()" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

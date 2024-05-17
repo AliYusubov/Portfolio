@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Cinzel Decorative", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.typed-cursor {
+    color: white;
+    font-size: 22px;
+}
+
+.scroll-down-animation-div {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+
+.hidden {
+    opacity: 0;
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+}
+
+.paragraph {
+    background-color: rgb(0, 0, 0)!important;
+    width: 150px;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.7;
+
+    div {
+        background-color: rgb(0, 77, 0)!important;
+        width: 70px;
+        height: 5px!important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+::selection {
+    background-color: darkgreen;
+    color: white;
+}
+
+/* Tablet */
+@media only screen and (max-width: 768px) {
+    
+}
+  
+/* Phone */
+@media only screen and (max-width: 480px) {
+
+}
+  
