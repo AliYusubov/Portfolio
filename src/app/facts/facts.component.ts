@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-facts',
   templateUrl: './facts.component.html',
-  styleUrl: './facts.component.css'
+  styleUrls: ['./facts.component.css']
 })
-
 export class FactsComponent implements OnInit {
   private isCounterVisible = false;
+  private isBrowser: boolean;
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit(): void {
-    window.addEventListener('scroll', this.onScroll.bind(this));
+    if (this.isBrowser) {
+      window.addEventListener('scroll', this.onScroll.bind(this));
+    }
   }
 
   onScroll(): void {
+    if (!this.isBrowser) return;
+
     const counterSignElement = document.querySelector('.counter-sign');
     if (!counterSignElement) {
       console.error('.counter-sign element not found');
@@ -40,6 +47,8 @@ export class FactsComponent implements OnInit {
   }
 
   updateCounts(): void {
+    if (!this.isBrowser) return;
+
     const countElements = document.querySelectorAll('.counter h1');
     const countsAndSpeeds = [
       { target: 550, speed: 30 },
@@ -67,5 +76,4 @@ export class FactsComponent implements OnInit {
       element.innerText = currentCount.toString();
     }, step);
   }
-  
 }
